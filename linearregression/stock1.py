@@ -5,6 +5,7 @@ from sklearn import preprocessing, svm
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
+import pickle
 from matplotlib import style
 style.use('ggplot')
 
@@ -46,6 +47,7 @@ y = np.array(df['label'])
 
 # This is optional based on practicality. Scales the feautres to make the model work better.
 
+
 # Split the data into training and test sets
 # 20% of the data is set aside as testing data. We don't train on the testing data so that we
 # can effectively test our model for overfitting
@@ -60,6 +62,19 @@ clf = LinearRegression()
 
 # Train / fit the model to the training data
 clf.fit(X_train, y_train)
+
+# Save the classifier for future use
+# potentially implement a loop to train a bunch of networks, track the
+# maximum efficiency, and save that one to disk...
+# creates a pickle file to store the classifier in using the dump function
+'''
+with open('linearregression.pickle', 'wb') as f:
+    pickle.dump(clf, f)
+
+# Load a previously saved classifer.
+pickle_in = open('linearregression.pickle', 'rb')
+clf = pickle.load(pickle_in)
+'''
 
 # Evaluate our model against the test data we set aside and print the accuracy.
 accuracy = clf.score(X_test, y_test)
