@@ -10,7 +10,7 @@ import pickle
 
 
 
-DATADIR = "" #path to data directory
+DATADIR = "../../Downloads/PetImages" #path to data directory
 
 CATEGORIES = ["Dog", "Cat"] # name of class directories
 
